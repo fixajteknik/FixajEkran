@@ -1,0 +1,23 @@
+#############################################
+# Datatypes (KEYWORD1)
+#############################################
+
+FixajEkran	KEYWORD1 
+demo		KEYWORD1
+test		KEYWORD1
+
+#############################################
+# Fonksiyonlar (KEYWORD2)
+#############################################
+
+begin		KEYWORD2
+oku		KEYWORD2
+say		KEYWORD2
+saylong		KEYWORD2
+say64		KEYWORD2
+yaz		KEYWORD2
+baglantiKur	KEYWORD2
+versiyonOku	KEYWORD2
+sayfaAc		KEYWORD2
+sayfaNo		KEYWORD2
+dokunmaVarsa	KEYWORD2
