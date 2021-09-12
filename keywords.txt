@@ -3,21 +3,36 @@
 #############################################
 
 FixajEkran	KEYWORD1 
-demo		KEYWORD1
-test		KEYWORD1
 
 #############################################
-# Fonksiyonlar (KEYWORD2)
+# Methods and Functions (KEYWORD2)
 #############################################
 
-begin		KEYWORD2
-oku		KEYWORD2
-say		KEYWORD2
-saylong		KEYWORD2
-say64		KEYWORD2
-yaz		KEYWORD2
+begin	KEYWORD2
+oku	KEYWORD2
+say	KEYWORD2
+saylong	KEYWORD2
+say64	KEYWORD2
+yaz	KEYWORD2
 baglantiKur	KEYWORD2
 versiyonOku	KEYWORD2
-sayfaAc		KEYWORD2
-sayfaNo		KEYWORD2
+sayfaAc	KEYWORD2
+sayfaNo	KEYWORD2
 dokunmaVarsa	KEYWORD2
+
+
+#############################################
+# Specifies Structures (KEYWORD3)
+#############################################
+
+fixaj	KEYWORD3	fixaj	RESERVED_WORD
+mfixaj	KEYWORD3	mfixaj	RESERVED_WORD
+test	KEYWORD3	test	RESERVED_WORD
+
+#############################################
+# Constants (LITERAL1)
+#############################################
+
+asd	LITERAL1
+
+
