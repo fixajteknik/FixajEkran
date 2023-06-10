@@ -1,25 +1,25 @@
-/****************************************Copyright (c)****************************************************
-**                             		Fixaj  Mehmet YILDIZ
-**
-**                             		https://fixaj.com/  
-**
-** Tüm hizmetler Mehmet Yıldız şirketi Fixaj tarafından sağlanmaktadır.
-** FİXAJ MAĞAZALARIMIZ DIŞINDA SATIN ALINAN TOPWAY MARKA DOKUNMATİK EKRANLARDA BU KÜTÜPHANENİN TİCARİ OLARAK KULLANIMI YASAKTIR.
-** Herhangi bir program, belge, test sonucu, çözüm, destek ve diğer malzeme ve bilgiler yalnızca referans amaçlıdır
-** ve müşterilerin kullanmama veya atıfta bulunma ve kendileri tarafından değişiklik yapma hakları vardır.
-** Müşterinin kullanımı sırasında herhangi bir özel, tesadüfi veya dolaylı kayıp meydana gelirse, 
-** herhangi bir bütünlük, güvenilirlik ve diğer garantileri sağlamak için şirket sorumlu olmayacaktır.
-** HERHANGİ BİR SORUMLULUĞUN KABUL EDİLMEMESİ.
-**                                                                        Fixaj
-**
-**
-**--------------File Info-------------------------------------------------------------------------------
-** Modified by:            	MEHMET YILDIZ
-** Modified date:        	8.06.2023
-** Version:                	v0.1
-** Description:    
- 
-********************************************************************************************************/
+/*! 										Copyright (c) 
+ *                              		Fixaj  Mehmet YILDIZ
+ * 
+ *                              		https://fixaj.com/  
+ * 
+ *  Tüm hizmetler Mehmet Yıldız şirketi Fixaj tarafından sağlanmaktadır.
+ *  FİXAJ MAĞAZALARIMIZ DIŞINDA SATIN ALINAN TOPWAY MARKA DOKUNMATİK EKRANLARDA BU KÜTÜPHANENİN TİCARİ OLARAK KULLANIMI YASAKTIR.
+ *  Herhangi bir program, belge, test sonucu, çözüm, destek ve diğer malzeme ve bilgiler yalnızca referans amaçlıdır
+ *  ve müşterilerin kullanmama veya atıfta bulunma ve kendileri tarafından değişiklik yapma hakları vardır.
+ *  Müşterinin kullanımı sırasında herhangi bir özel, tesadüfi veya dolaylı kayıp meydana gelirse, 
+ *  herhangi bir bütünlük, güvenilirlik ve diğer garantileri sağlamak için şirket sorumlu olmayacaktır.
+ *  HERHANGİ BİR SORUMLULUĞUN KABUL EDİLMEMESİ.
+ *                                                                         Fixaj
+ * 
+ * 
+ * --------------File Info-------------------------------------------------------------------------------
+ *  Modified by:            	MEHMET YILDIZ
+ *  Modified date:        	8.06.2023
+ *  Version:                	v0.1
+ *  Description:    
+ * 
+ */
 
 //#include "esp32-hal.h"
 //#include "soc/soc_memory_layout.h"
@@ -364,16 +364,15 @@ bool FixajEkran::read_and_process_data(T *result) {
         process_command(command, data, data_length, result);
         return true;
       } else if (command == 0x30) {
-        String str((char *)data);
+       String str((char *)data);
         if (str.equals("Topway HMT Ready")) {
-          // Serial.print("Ekran hazır");
+            Serial.println(str);
           return true;
-        } else {
-          //Serial.print("HATA- Ekran hazır degil, kabloları kontrol edin.");
-        }
+        } 
       }
     }
   }
+  //Serial.println("HATA-bağlantı YOK");
   cleanUARTBuffer();
   return false;
 }

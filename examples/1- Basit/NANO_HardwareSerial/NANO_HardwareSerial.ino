@@ -21,7 +21,7 @@
  
 ********************************************************************************************************/
 
-#include <FixajEkran.h> 
+#include <FixajEkran.h>
 FixajEkran FixajSS(&Serial, UART_BPS_RATE_115200);
 
 unsigned long kanalBekleme_sure = 0;
@@ -37,9 +37,16 @@ Buton Geri(1, 0);
 
 int a = 0, b = 0;
 
-void setup() {  
+void setup() {
   FixajSS.begin();
   delay(500);
+  if (!FixajSS.EkranTest()) {
+    Serial.println("bağlantı hatası, kabloları kontrol edin");  //ESP yi veya NANO yu PCB den çıkarıp programı yükleyin sonra PCB takın
+                                                                //Ekran nın Baud Rate ni de ayarlamayı unutmuş olabilirsiniz.
+                                                                //SGTools programından projenize sağ tıklayın Prpject properties-> Baud rate
+                                                                //sonra arayüz tasarımını tekrar Ekrana yükleyin.
+  }
+  delay(100);
 }
 void loop() {
 

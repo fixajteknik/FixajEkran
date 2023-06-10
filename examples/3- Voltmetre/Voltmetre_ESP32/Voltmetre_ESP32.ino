@@ -22,7 +22,7 @@
 ********************************************************************************************************/
 
 #include <HardwareSerial.h>
-#include "FixajEkran.h" 
+#include <FixajEkran.h>
 
 #define graf 0x060000
 
@@ -42,9 +42,20 @@ FixajEkran FixajSS(TX, RX, &fixajSerial, UART_BPS_RATE_115200);
  
 
 void setup() {
-  FixajSS.begin();
-  delay(500);
-  Serial.begin(115200); 
+  Serial.begin(115200);
+  while (!Serial) {
+    ;
+  }
+  delay(100);  
+  FixajSS.begin();  
+  delay(500); 
+  if (!FixajSS.EkranTest()) {
+    Serial.println("bağlantı hatası, kabloları kontrol edin");  //ESP yi veya NANO yu PCB den çıkarıp programı yükleyin sonra PCB takın
+                                                                //Ekran nın Baud Rate ni de ayarlamayı unutmuş olabilirsiniz. 
+                                                                //SGTools programından projenize sağ tıklayın Prpject properties-> Baud rate
+                                                                //sonra arayüz tasarımını tekrar Ekrana yükleyin.
+  }
+  delay(100);
 
   analogReadResolution(10);
 }
@@ -57,6 +68,11 @@ void loop() {
   }
     FixajSS.grafikCiz(graf, SIZE, Alog);
 */
+
+//grafiği çizdirdiğinizde sinüs ün negatif değerleri grafiğin altında kaldığı için görünmeyecektir
+//siz arayüz programında grafik değer aralığını negatif değerler yapınca görünecektir.
+//grafik tasarımı öncelikli olarak DC voltmetre olarak tasarlandığı için 
+
   for (int i = 0; i < SIZE; i++) {
     sin_wave[i] = round(OFFSET + AMPLITUDE * sin(2 * PI * i / SIZE));
   }

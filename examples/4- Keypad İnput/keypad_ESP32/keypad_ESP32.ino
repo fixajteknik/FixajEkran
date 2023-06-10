@@ -40,9 +40,20 @@ Buton keypadESC(0, 3);
 Buton keypadTest(0, 16);
 
 void setup() {
-  FixajSS.begin();
-  delay(500);
   Serial.begin(115200);
+  while (!Serial) {
+    ;
+  }
+  delay(100);  
+  FixajSS.begin();  
+  delay(500); 
+  if (!FixajSS.EkranTest()) {
+    Serial.println("bağlantı hatası, kabloları kontrol edin");  //ESP yi veya NANO yu PCB den çıkarıp programı yükleyin sonra PCB takın
+                                                                //Ekran nın Baud Rate ni de ayarlamayı unutmuş olabilirsiniz. 
+                                                                //SGTools programından projenize sağ tıklayın Prpject properties-> Baud rate
+                                                                //sonra arayüz tasarımını tekrar Ekrana yükleyin.
+  }
+  delay(100);
 }
 
 void loop() {

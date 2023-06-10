@@ -22,7 +22,7 @@
 ********************************************************************************************************/
 
 #include <HardwareSerial.h>
-#include "FixajEkran.h"
+#include <FixajEkran.h>
 #include <stdio.h>
 #include <stdlib.h>
 #include "driver/adc.h"
@@ -55,9 +55,21 @@ INT16U Alog[269];
 
 
 void setup() {
-  FixajSS.begin();
-  delay(500);
+  
   Serial.begin(115200);
+  while (!Serial) {
+    ;
+  }
+  delay(100);  
+  FixajSS.begin();  
+  delay(500); 
+  if (!FixajSS.EkranTest()) {
+    Serial.println("bağlantı hatası, kabloları kontrol edin");  //ESP yi veya NANO yu PCB den çıkarıp programı yükleyin sonra PCB takın
+                                                                //Ekran nın Baud Rate ni de ayarlamayı unutmuş olabilirsiniz. 
+                                                                //SGTools programından projenize sağ tıklayın Prpject properties-> Baud rate
+                                                                //sonra arayüz tasarımını tekrar Ekrana yükleyin.
+  }
+  delay(100);
 
   esp_adc_cal_characterize(ADC_UNIT_1, ADC_ATTEN_DB_6, ADC_WIDTH_BIT_12, 0, &adc1_chars);
   adc1_config_width(ADC_WIDTH_BIT_12);

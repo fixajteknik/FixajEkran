@@ -48,12 +48,24 @@ Buton YesilLED(0, 1);
 Buton MaviLED(0, 2);
 Buton keypadOK(0, 15);
 Buton keypadESC(0, 3);
-Buton keypadTest(0, 16); 
+Buton keypadTest(0, 16);
 
 void setup() {
+  Serial.begin(115200);
+  while (!Serial) {
+    ;
+  }
+  delay(100);
   FixajSS.begin();
   delay(500);
-  Serial.begin(115200);
+  if (!FixajSS.EkranTest()) {
+    Serial.println("bağlantı hatası, kabloları kontrol edin");  //ESP yi veya NANO yu PCB den çıkarıp programı yükleyin sonra PCB takın
+                                                                //Ekran nın Baud Rate ni de ayarlamayı unutmuş olabilirsiniz.
+                                                                //SGTools programından projenize sağ tıklayın Prpject properties-> Baud rate
+                                                                //sonra arayüz tasarımını tekrar Ekrana yükleyin.
+  }
+  delay(100);
+
   pinMode(kirmiziPin, OUTPUT);
   pinMode(yesilPin, OUTPUT);
   pinMode(maviPin, OUTPUT);
@@ -77,18 +89,15 @@ void loop() {
       digitalWrite(kirmiziPin, 0);
       digitalWrite(yesilPin, 0);
       digitalWrite(maviPin, 1);
-    }
-    else if (FixajSS.butonBasildiMi(keypadOK)) {
-      Serial.println("ok click"); 
-    }
-    else if (FixajSS.butonBasildiMi(keypadESC)) {
-      Serial.println("esc click"); 
-    }
-    else if (FixajSS.butonBasildiMi(keypadTest)) {
+    } else if (FixajSS.butonBasildiMi(keypadOK)) {
+      Serial.println("ok click");
+    } else if (FixajSS.butonBasildiMi(keypadESC)) {
+      Serial.println("esc click");
+    } else if (FixajSS.butonBasildiMi(keypadTest)) {
       Serial.println("test click");
       digitalWrite(kirmiziPin, 0);
       digitalWrite(yesilPin, 0);
       digitalWrite(maviPin, 1);
     }
-  } 
+  }
 }

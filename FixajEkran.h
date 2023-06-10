@@ -1,25 +1,25 @@
-/****************************************Copyright (c)****************************************************
-**                             		Fixaj  Mehmet YILDIZ
-**
-**                             		https://fixaj.com/  
-**
-** Tüm hizmetler Mehmet Yıldız şirketi Fixaj tarafından sağlanmaktadır.
-** FİXAJ MAĞAZALARIMIZ DIŞINDA SATIN ALINAN TOPWAY MARKA DOKUNMATİK EKRANLARDA BU KÜTÜPHANENİN TİCARİ OLARAK KULLANIMI YASAKTIR.
-** Herhangi bir program, belge, test sonucu, çözüm, destek ve diğer malzeme ve bilgiler yalnızca referans amaçlıdır
-** ve müşterilerin kullanmama veya atıfta bulunma ve kendileri tarafından değişiklik yapma hakları vardır.
-** Müşterinin kullanımı sırasında herhangi bir özel, tesadüfi veya dolaylı kayıp meydana gelirse, 
-** herhangi bir bütünlük, güvenilirlik ve diğer garantileri sağlamak için şirket sorumlu olmayacaktır.
-** HERHANGİ BİR SORUMLULUĞUN KABUL EDİLMEMESİ.
-**                                                                        Fixaj
-**
-**
-**--------------File Info-------------------------------------------------------------------------------
-** Modified by:            	MEHMET YILDIZ
-** Modified date:        	8.06.2023
-** Version:                	v0.1
-** Description:    
- 
-********************************************************************************************************/
+/*! 										Copyright (c) 
+ *                              		Fixaj  Mehmet YILDIZ
+ * 
+ *                              		https://fixaj.com/  
+ * 
+ *  Tüm hizmetler Mehmet Yıldız şirketi Fixaj tarafından sağlanmaktadır.
+ *  FİXAJ MAĞAZALARIMIZ DIŞINDA SATIN ALINAN TOPWAY MARKA DOKUNMATİK EKRANLARDA BU KÜTÜPHANENİN TİCARİ OLARAK KULLANIMI YASAKTIR.
+ *  Herhangi bir program, belge, test sonucu, çözüm, destek ve diğer malzeme ve bilgiler yalnızca referans amaçlıdır
+ *  ve müşterilerin kullanmama veya atıfta bulunma ve kendileri tarafından değişiklik yapma hakları vardır.
+ *  Müşterinin kullanımı sırasında herhangi bir özel, tesadüfi veya dolaylı kayıp meydana gelirse, 
+ *  herhangi bir bütünlük, güvenilirlik ve diğer garantileri sağlamak için şirket sorumlu olmayacaktır.
+ *  HERHANGİ BİR SORUMLULUĞUN KABUL EDİLMEMESİ.
+ *                                                                         Fixaj
+ * 
+ * 
+ * --------------File Info-------------------------------------------------------------------------------
+ *  Modified by:            	MEHMET YILDIZ
+ *  Modified date:        	8.06.2023
+ *  Version:                	v0.1
+ *  Description:    
+ * 
+ */
 
 
 #include "stdint.h"
