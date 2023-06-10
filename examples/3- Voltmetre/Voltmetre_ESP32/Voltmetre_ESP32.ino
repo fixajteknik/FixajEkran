@@ -27,41 +27,42 @@
 #define graf 0x060000
 
 #define RX 17  //  Lora nın 3. pini RX in ESP 32 de hangi pine bağlı olduğu
-#define TX 16  // Lora nın 4. pini TX in ESP 32 de hangi pine bağlı olduğu 
+#define TX 16  // Lora nın 4. pini TX in ESP 32 de hangi pine bağlı olduğu
 
 #define SIZE 269        // Array boyutu
 #define OFFSET 0        // Orta değer (genliği 2'ye böleriz)
 #define AMPLITUDE 1000  // Maksimum genlik
 
-int sin_wave[SIZE];  // Sinüs dalgası için array  
+int sin_wave[SIZE];  // Sinüs dalgası için array
 INT16U Alog[SIZE];
 
 HardwareSerial fixajSerial(2);  //esp32 hardware serial kullanıyoruz
 FixajEkran FixajSS(TX, RX, &fixajSerial, UART_BPS_RATE_115200);
 
- 
+
 
 void setup() {
   Serial.begin(115200);
   while (!Serial) {
     ;
   }
-  delay(100);  
-  FixajSS.begin();  
-  delay(500); 
+  delay(100);
+  FixajSS.begin();
+  delay(500);
   if (!FixajSS.EkranTest()) {
     Serial.println("bağlantı hatası, kabloları kontrol edin");  //ESP yi veya NANO yu PCB den çıkarıp programı yükleyin sonra PCB takın
-                                                                //Ekran nın Baud Rate ni de ayarlamayı unutmuş olabilirsiniz. 
+                                                                //Ekran nın Baud Rate ni de ayarlamayı unutmuş olabilirsiniz.
                                                                 //SGTools programından projenize sağ tıklayın Prpject properties-> Baud rate
                                                                 //sonra arayüz tasarımını tekrar Ekrana yükleyin.
   }
   delay(100);
+  Serial.println("Fixaj.com Basliyor...");
 
   analogReadResolution(10);
 }
 
 void loop() {
- /*
+  /*
   for (int i = 0; i < SIZE; i++) {
     Alog[i] = analogReadMilliVolts(32);
     delay(1);
@@ -69,15 +70,13 @@ void loop() {
     FixajSS.grafikCiz(graf, SIZE, Alog);
 */
 
-//grafiği çizdirdiğinizde sinüs ün negatif değerleri grafiğin altında kaldığı için görünmeyecektir
-//siz arayüz programında grafik değer aralığını negatif değerler yapınca görünecektir.
-//grafik tasarımı öncelikli olarak DC voltmetre olarak tasarlandığı için 
+  //grafiği çizdirdiğinizde sinüs ün negatif değerleri grafiğin altında kaldığı için görünmeyecektir
+  //siz arayüz programında grafik değer aralığını negatif değerler yapınca görünecektir.
+  //grafik tasarımı öncelikli olarak DC voltmetre olarak tasarlandığı için
 
   for (int i = 0; i < SIZE; i++) {
     sin_wave[i] = round(OFFSET + AMPLITUDE * sin(2 * PI * i / SIZE));
   }
 
   FixajSS.grafikCiz(graf, SIZE, sin_wave);
-
- 
 }

@@ -59,6 +59,7 @@ void setup() {
                                                                 //sonra arayüz tasarımını tekrar Ekrana yükleyin.
   }
   delay(100);
+  Serial.println("Fixaj.com Basliyor...");
 }
 
 void loop() {

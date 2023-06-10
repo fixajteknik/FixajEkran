@@ -56,8 +56,11 @@ void setup() {
                                                                 //Ekran nın Baud Rate ni de ayarlamayı unutmuş olabilirsiniz.
                                                                 //SGTools programından projenize sağ tıklayın Prpject properties-> Baud rate
                                                                 //sonra arayüz tasarımını tekrar Ekrana yükleyin.
+
+                                                                
   }
   delay(100);
+  Serial.println("Fixaj.com Basliyor...");
 }
 
 void loop() {
