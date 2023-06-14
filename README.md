@@ -9,7 +9,7 @@ BU KÜTÜPHANENİN FİXAJ MAĞAZALARI DIŞINDA ALINAN DOKUNMATİK EKRANLARDA Tİ
 
 ## KÜTÜPHANE TANITIM VİDEOSU
 
-[![fixaj Youtube](https://i.ytimg.com/an_webp/U8sSX5DGtkc/mqdefault_6s.webp?du=3000&sqp=CLbmhqQG&rs=AOn4CLClkmRSSOQQbmEBQEfF0Hz0Iju-aQ)](http://www.youtube.com/watch?v=66SuvoaeSPs "Ekran Kütüphanesi Kullanımı")
+[![fixaj Youtube](https://i.ytimg.com/an_webp/pP-oeIcGcR4/mqdefault_6s.webp?du=3000&sqp=COCupaQG&rs=AOn4CLBrrfHx3Uv3H8P1ub0iTj7s6HKUlA)](http://www.youtube.com/watch?v=pP-oeIcGcR4 "Ekran Kütüphanesi Kullanımı")
 ## API Kullanımı
 
 Kütüphaneyi indirip Arduinu İDE ye kurduktan sonra Örnek uygulamalar üzerinden işe başlayabilirsiniz. Uygulamaları Basit, Orta ve Uzman şeklinde sınıflandırdım Basit kategorisinde Arduina da SoftwareSerial olarak ve Hardware Serial olarak aynı örneğin çalışma kodlarını yükledim. Ayrıca örneği çalıştıracağınız 4.3 inch ve 7 inch için aynı tasarımı da github dan indirdiğiniz kütüphane içinde örnekler/Basit klasörü içinde bulabilirsiniz.
