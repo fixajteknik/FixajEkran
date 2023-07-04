@@ -23,6 +23,7 @@
 
 
 #include "stdint.h"
+#include "ButtonClickListener.h"
 #ifndef FixajEkran_h
 #define FixajEkran_h
 
@@ -68,11 +69,10 @@
 //Butonlar nesne tabanlı tanımlandı kullanıcı
 // daha kolay değişken tanımlaması yapabilmesi için
 
-class Buton {
+class Buton : public Button {
 public:
   byte data[3];
-
-  Buton(uint16_t sayfaNo, byte touchID) {
+  Buton(uint16_t sayfaNo, byte touchID) : Button(touchID) {
     data[0] = (sayfaNo >> 8) & 0xFF;
     data[1] = sayfaNo & 0xFF;
     data[2] = touchID;

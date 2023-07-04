@@ -23,6 +23,7 @@
 
 #include <HardwareSerial.h>
 #include <FixajEkran.h>
+#include <vector>
 
 unsigned long kanalBekleme_sure = 0;
 int kanalBekleme_bekleme = 2000;
@@ -42,13 +43,13 @@ int kanalBekleme_bekleme = 2000;
 HardwareSerial fixajSerial(2);  //esp32 hardware serial kullanıyoruz
 FixajEkran FixajSS(TX, RX, &fixajSerial, UART_BPS_RATE_115200);
 
-
-Buton KirmiziLED(0, 0);
-Buton YesilLED(0, 1);
-Buton MaviLED(0, 2);
-Buton keypadOK(0, 15);
-Buton keypadESC(0, 3);
-Buton keypadTest(0, 16);
+std::vector<Buton> buttons; // this way we can loop through our vector of "buton"s
+buttons.push_back(Buton(0, 0));      // KirmiziLED
+buttons.push_back(Buton(0, 1));      // YesilLED
+buttons.push_back(Buton(0, 2));      // MaviLED
+buttons.push_back(Buton(0, 15));     // keypadOK
+buttons.push_back(Buton(0, 3));      // keypadESC
+buttons.push_back(Buton(0, 16));     // keypadTest
 
 void setup() {
   Serial.begin(115200);
@@ -73,32 +74,7 @@ void setup() {
 }
 
 void loop() {
-
-  if (FixajSS.dokunmaDinle()) {
-    if (FixajSS.butonBasildiMi(KirmiziLED)) {
-      Serial.println("Kırmızı click");
-      digitalWrite(kirmiziPin, HIGH);
-      digitalWrite(yesilPin, LOW);
-      digitalWrite(maviPin, LOW);
-    } else if (FixajSS.butonBasildiMi(YesilLED)) {
-      Serial.println("Yeşil click");
-      digitalWrite(kirmiziPin, 0);
-      digitalWrite(yesilPin, 1);
-      digitalWrite(maviPin, 0);
-    } else if (FixajSS.butonBasildiMi(MaviLED)) {
-      Serial.println("Mavi click");
-      digitalWrite(kirmiziPin, 0);
-      digitalWrite(yesilPin, 0);
-      digitalWrite(maviPin, 1);
-    } else if (FixajSS.butonBasildiMi(keypadOK)) {
-      Serial.println("ok click");
-    } else if (FixajSS.butonBasildiMi(keypadESC)) {
-      Serial.println("esc click");
-    } else if (FixajSS.butonBasildiMi(keypadTest)) {
-      Serial.println("test click");
-      digitalWrite(kirmiziPin, 0);
-      digitalWrite(yesilPin, 0);
-      digitalWrite(maviPin, 1);
-    }
+  for (auto& buton : buttons) {
+    buton.checkState();
   }
 }
