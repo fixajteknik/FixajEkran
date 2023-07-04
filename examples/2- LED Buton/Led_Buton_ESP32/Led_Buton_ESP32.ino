@@ -51,6 +51,7 @@ buttons.push_back(Buton(0, 15));     // keypadOK
 buttons.push_back(Buton(0, 3));      // keypadESC
 buttons.push_back(Buton(0, 16));     // keypadTest
 
+
 void setup() {
   Serial.begin(115200);
   while (!Serial) {
@@ -71,6 +72,43 @@ void setup() {
   pinMode(kirmiziPin, OUTPUT);
   pinMode(yesilPin, OUTPUT);
   pinMode(maviPin, OUTPUT);
+
+  // Attach callback functions to handle button click events
+  buttons[0].onClick([]() {
+    Serial.println("Kırmızı click");
+    digitalWrite(kirmiziPin, HIGH);
+    digitalWrite(yesilPin, LOW);
+    digitalWrite(maviPin, LOW);
+  });
+
+  buttons[1].onClick([]() {
+    Serial.println("Yeşil click");
+    digitalWrite(kirmiziPin, LOW);
+    digitalWrite(yesilPin, HIGH);
+    digitalWrite(maviPin, LOW);
+  });
+
+  buttons[2].onClick([]() {
+    Serial.println("Mavi click");
+    digitalWrite(kirmiziPin, LOW);
+    digitalWrite(yesilPin, LOW);
+    digitalWrite(maviPin, HIGH);
+  });
+
+  buttons[3].onClick([]() {
+    Serial.println("ok click");
+  });
+
+  buttons[4].onClick([]() {
+    Serial.println("esc click");
+  });
+
+  buttons[5].onClick([]() {
+    Serial.println("test click");
+    digitalWrite(kirmiziPin, LOW);
+    digitalWrite(yesilPin, LOW);
+    digitalWrite(maviPin, HIGH);
+  });
 }
 
 void loop() {
