@@ -23,7 +23,7 @@
 
 #include <HardwareSerial.h>
 #include <FixajEkran.h>
-#include <vector>
+#include <Vector.h>
 
 unsigned long kanalBekleme_sure = 0;
 int kanalBekleme_bekleme = 2000;
@@ -43,7 +43,7 @@ int kanalBekleme_bekleme = 2000;
 HardwareSerial fixajSerial(2);  //esp32 hardware serial kullanıyoruz
 FixajEkran FixajSS(TX, RX, &fixajSerial, UART_BPS_RATE_115200);
 
-std::vector<Buton> buttons; // this way we can loop through our vector of "buton"s
+vector<Buton> buttons; // this way we can loop through our vector of "buton"s
 buttons.push_back(Buton(0, 0));      // KirmiziLED
 buttons.push_back(Buton(0, 1));      // YesilLED
 buttons.push_back(Buton(0, 2));      // MaviLED
