@@ -24,6 +24,7 @@
 #include <HardwareSerial.h>
 #include <FixajEkran.h>
 #include <Vector.h>
+#include <ButtonClickListener.h>
 
 unsigned long kanalBekleme_sure = 0;
 int kanalBekleme_bekleme = 2000;
@@ -43,16 +44,15 @@ int kanalBekleme_bekleme = 2000;
 HardwareSerial fixajSerial(2);  //esp32 hardware serial kullanıyoruz
 FixajEkran FixajSS(TX, RX, &fixajSerial, UART_BPS_RATE_115200);
 
-vector<Buton> buttons; // this way we can loop through our vector of "buton"s
-buttons.push_back(Buton(0, 0));      // KirmiziLED
-buttons.push_back(Buton(0, 1));      // YesilLED
-buttons.push_back(Buton(0, 2));      // MaviLED
-buttons.push_back(Buton(0, 15));     // keypadOK
-buttons.push_back(Buton(0, 3));      // keypadESC
-buttons.push_back(Buton(0, 16));     // keypadTest
-
+Vector<Buton> buttons; // this way we can loop through our vector of "buton"s
 
 void setup() {
+  buttons.push_back(Buton(0, 0));      // KirmiziLED
+  buttons.push_back(Buton(0, 1));      // YesilLED
+  buttons.push_back(Buton(0, 2));      // MaviLED
+  buttons.push_back(Buton(0, 15));     // keypadOK
+  buttons.push_back(Buton(0, 3));      // keypadESC
+  buttons.push_back(Buton(0, 16));     // keypadTest
   Serial.begin(115200);
   while (!Serial) {
     ;
@@ -112,7 +112,9 @@ void setup() {
 }
 
 void loop() {
-  for (auto& buton : buttons) {
-    buton.checkState();
+  for (int i = 0; i < buttons.size(); ++i) {
+    auto& x = buttons[i];
+
+    x.checkState();
   }
 }
