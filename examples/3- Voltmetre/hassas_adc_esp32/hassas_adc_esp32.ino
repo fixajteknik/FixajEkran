@@ -47,7 +47,7 @@ uint32_t voltage;
 int sin_wave[SIZE];  // Sinüs dalgası için array
 
 HardwareSerial fixajSerial(2);  //esp32 hardware serial kullanıyoruz
-FixajEkran FixajSS(TX, RX, &fixajSerial, UART_BPS_RATE_115200);
+FixajEkran FixajSS(TX, RX, &fixajSerial, UART_BPS_RATE_115200_Ekran);
 
 char AIN = 0;
 char i;

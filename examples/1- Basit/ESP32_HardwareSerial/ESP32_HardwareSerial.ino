@@ -28,7 +28,7 @@
 #define TX 16  // Lora nın 4. pini TX in ESP 32 de hangi pine bağlı olduğu
 
 HardwareSerial fixajSerial(2);  //esp32 hardware serial kullanıyoruz
-FixajEkran FixajSS(TX, RX, &fixajSerial, UART_BPS_RATE_115200);
+FixajEkran FixajSS(TX, RX, &fixajSerial, UART_BPS_RATE_115200_Ekran);
 
 unsigned long kanalBekleme_sure = 0;
 int kanalBekleme_bekleme = 2000;

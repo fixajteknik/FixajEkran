@@ -40,7 +40,7 @@ int kanalBekleme_bekleme = 2000;
 #define maviPin 27
 
 HardwareSerial fixajSerial(2);  //esp32 hardware serial kullanıyoruz
-FixajEkran FixajSS(TX, RX, &fixajSerial, UART_BPS_RATE_115200);
+FixajEkran FixajSS(TX, RX, &fixajSerial, UART_BPS_RATE_115200_Ekran);
 
 
 Buton KirmiziLED(0, 0);

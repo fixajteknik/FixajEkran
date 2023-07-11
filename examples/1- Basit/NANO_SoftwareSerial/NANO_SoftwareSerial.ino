@@ -26,7 +26,7 @@
 #define TX_Pin 9
 #include <SoftwareSerial.h>
 SoftwareSerial mySerial(RX_Pin, TX_Pin);
-FixajEkran FixajSS(&mySerial, UART_BPS_RATE_115200);
+FixajEkran FixajSS(&mySerial, UART_BPS_RATE_115200_Ekran);
 
 unsigned long kanalBekleme_sure = 0;
 int kanalBekleme_bekleme = 2000;

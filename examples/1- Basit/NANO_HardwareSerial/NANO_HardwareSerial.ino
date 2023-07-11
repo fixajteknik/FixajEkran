@@ -22,7 +22,7 @@
 ********************************************************************************************************/
 
 #include <FixajEkran.h>
-FixajEkran FixajSS(&Serial, UART_BPS_RATE_115200);
+FixajEkran FixajSS(&Serial, UART_BPS_RATE_115200_Ekran);
 
 unsigned long kanalBekleme_sure = 0;
 int kanalBekleme_bekleme = 2000;

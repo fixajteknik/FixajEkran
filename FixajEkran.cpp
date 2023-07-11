@@ -35,7 +35,7 @@ byte __GucFrameSorgu3[3];
 
 
 #ifdef ACTIVATE_SOFTWARE_SERIAL
-FixajEkran::FixajEkran(byte txE32pin, byte rxE32pin, UART_BPS_RATE bpsRate) {
+FixajEkran::FixajEkran(byte txE32pin, byte rxE32pin, UART_BPS_RATE_Ekran bpsRate) {
   this->txE32pin = txE32pin;
   this->rxE32pin = rxE32pin;
   SoftwareSerial *mySerial = new SoftwareSerial((uint8_t)this->txE32pin, (uint8_t)this->rxE32pin);  // "RX TX" // @suppress("Abstract class cannot be instantiated")
@@ -47,7 +47,7 @@ FixajEkran::FixajEkran(byte txE32pin, byte rxE32pin, UART_BPS_RATE bpsRate) {
 
 #endif
 
-FixajEkran::FixajEkran(HardwareSerial *serial, UART_BPS_RATE bpsRate) {  //, uint32_t serialConfig
+FixajEkran::FixajEkran(HardwareSerial *serial, UART_BPS_RATE_Ekran bpsRate) {  //, uint32_t serialConfig
   this->txE32pin = txE32pin;
   this->rxE32pin = rxE32pin;
 
@@ -63,7 +63,7 @@ FixajEkran::FixajEkran(HardwareSerial *serial, UART_BPS_RATE bpsRate) {  //, uin
 }
 
 #ifdef HARDWARE_SERIAL_SELECTABLE_PIN
-FixajEkran::FixajEkran(byte txE32pin, byte rxE32pin, HardwareSerial *serial, UART_BPS_RATE bpsRate, uint32_t serialConfig) {
+FixajEkran::FixajEkran(byte txE32pin, byte rxE32pin, HardwareSerial *serial, UART_BPS_RATE_Ekran bpsRate, uint32_t serialConfig) {
   this->txE32pin = txE32pin;
   this->rxE32pin = rxE32pin;
 
@@ -82,7 +82,7 @@ FixajEkran::FixajEkran(byte txE32pin, byte rxE32pin, HardwareSerial *serial, UAR
 
 #ifdef ACTIVATE_SOFTWARE_SERIAL
 
-FixajEkran::FixajEkran(SoftwareSerial *serial, UART_BPS_RATE bpsRate) {
+FixajEkran::FixajEkran(SoftwareSerial *serial, UART_BPS_RATE_Ekran bpsRate) {
   this->txE32pin = txE32pin;
   this->rxE32pin = rxE32pin;
 

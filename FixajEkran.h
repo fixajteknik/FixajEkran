@@ -82,16 +82,16 @@ public:
 class FixajEkran {
 public:
 #ifdef ACTIVATE_SOFTWARE_SERIAL
-  FixajEkran(byte txE32pin, byte rxE32pin, UART_BPS_RATE bpsRate = UART_BPS_RATE_9600);
+  FixajEkran(byte txE32pin, byte rxE32pin, UART_BPS_RATE_Ekran bpsRate = UART_BPS_RATE_9600_Ekran);
 #endif
-  FixajEkran(HardwareSerial* serial, UART_BPS_RATE bpsRate = UART_BPS_RATE_9600);
+  FixajEkran(HardwareSerial* serial, UART_BPS_RATE_Ekran bpsRate = UART_BPS_RATE_9600_Ekran);
 
 #ifdef HARDWARE_SERIAL_SELECTABLE_PIN
-  FixajEkran(byte txE32pin, byte rxE32pin, HardwareSerial* serial, UART_BPS_RATE bpsRate, uint32_t serialConfig = SERIAL_8N1);
+  FixajEkran(byte txE32pin, byte rxE32pin, HardwareSerial* serial, UART_BPS_RATE_Ekran bpsRate, uint32_t serialConfig = SERIAL_8N1);
 #endif
 
 #ifdef ACTIVATE_SOFTWARE_SERIAL
-  FixajEkran(SoftwareSerial* serial, UART_BPS_RATE bpsRate = UART_BPS_RATE_9600);
+  FixajEkran(SoftwareSerial* serial, UART_BPS_RATE_Ekran bpsRate = UART_BPS_RATE_9600_Ekran);
 #endif
   bool begin();
   int available();
@@ -226,7 +226,7 @@ private:
 #ifdef HARDWARE_SERIAL_SELECTABLE_PIN
   uint32_t serialConfig = SERIAL_8N1;
 #endif
-  UART_BPS_RATE bpsRate = UART_BPS_RATE_9600;
+  UART_BPS_RATE_Ekran bpsRate = UART_BPS_RATE_9600_Ekran;
 
   struct NeedsStream {
     template<typename T>
