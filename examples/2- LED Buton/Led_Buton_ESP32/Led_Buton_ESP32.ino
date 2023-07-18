@@ -23,6 +23,8 @@
 
 #include <HardwareSerial.h>
 #include <FixajEkran.h>
+#include <Vector.h>
+#include <ButtonClickListener.h>
 
 unsigned long kanalBekleme_sure = 0;
 int kanalBekleme_bekleme = 2000;
@@ -42,15 +44,15 @@ int kanalBekleme_bekleme = 2000;
 HardwareSerial fixajSerial(2);  //esp32 hardware serial kullanıyoruz
 FixajEkran FixajSS(TX, RX, &fixajSerial, UART_BPS_RATE_115200_Ekran);
 
-
-Buton KirmiziLED(0, 0);
-Buton YesilLED(0, 1);
-Buton MaviLED(0, 2);
-Buton keypadOK(0, 15);
-Buton keypadESC(0, 3);
-Buton keypadTest(0, 16);
+Vector<Buton> buttons; // this way we can loop through our vector of "buton"s
 
 void setup() {
+  buttons.push_back(Buton(0, 0));      // KirmiziLED
+  buttons.push_back(Buton(0, 1));      // YesilLED
+  buttons.push_back(Buton(0, 2));      // MaviLED
+  buttons.push_back(Buton(0, 15));     // keypadOK
+  buttons.push_back(Buton(0, 3));      // keypadESC
+  buttons.push_back(Buton(0, 16));     // keypadTest
   Serial.begin(115200);
   while (!Serial) {
     ;
@@ -70,35 +72,49 @@ void setup() {
   pinMode(kirmiziPin, OUTPUT);
   pinMode(yesilPin, OUTPUT);
   pinMode(maviPin, OUTPUT);
+
+  // Attach callback functions to handle button click events
+  buttons[0].onClick([]() {
+    Serial.println("Kırmızı click");
+    digitalWrite(kirmiziPin, HIGH);
+    digitalWrite(yesilPin, LOW);
+    digitalWrite(maviPin, LOW);
+  });
+
+  buttons[1].onClick([]() {
+    Serial.println("Yeşil click");
+    digitalWrite(kirmiziPin, LOW);
+    digitalWrite(yesilPin, HIGH);
+    digitalWrite(maviPin, LOW);
+  });
+
+  buttons[2].onClick([]() {
+    Serial.println("Mavi click");
+    digitalWrite(kirmiziPin, LOW);
+    digitalWrite(yesilPin, LOW);
+    digitalWrite(maviPin, HIGH);
+  });
+
+  buttons[3].onClick([]() {
+    Serial.println("ok click");
+  });
+
+  buttons[4].onClick([]() {
+    Serial.println("esc click");
+  });
+
+  buttons[5].onClick([]() {
+    Serial.println("test click");
+    digitalWrite(kirmiziPin, LOW);
+    digitalWrite(yesilPin, LOW);
+    digitalWrite(maviPin, HIGH);
+  });
 }
 
 void loop() {
+  for (int i = 0; i < buttons.size(); ++i) {
+    auto& x = buttons[i];
 
-  if (FixajSS.dokunmaDinle()) {
-    if (FixajSS.butonBasildiMi(KirmiziLED)) {
-      Serial.println("Kırmızı click");
-      digitalWrite(kirmiziPin, HIGH);
-      digitalWrite(yesilPin, LOW);
-      digitalWrite(maviPin, LOW);
-    } else if (FixajSS.butonBasildiMi(YesilLED)) {
-      Serial.println("Yeşil click");
-      digitalWrite(kirmiziPin, 0);
-      digitalWrite(yesilPin, 1);
-      digitalWrite(maviPin, 0);
-    } else if (FixajSS.butonBasildiMi(MaviLED)) {
-      Serial.println("Mavi click");
-      digitalWrite(kirmiziPin, 0);
-      digitalWrite(yesilPin, 0);
-      digitalWrite(maviPin, 1);
-    } else if (FixajSS.butonBasildiMi(keypadOK)) {
-      Serial.println("ok click");
-    } else if (FixajSS.butonBasildiMi(keypadESC)) {
-      Serial.println("esc click");
-    } else if (FixajSS.butonBasildiMi(keypadTest)) {
-      Serial.println("test click");
-      digitalWrite(kirmiziPin, 0);
-      digitalWrite(yesilPin, 0);
-      digitalWrite(maviPin, 1);
-    }
+    x.checkState();
   }
 }
