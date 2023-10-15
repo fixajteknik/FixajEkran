@@ -533,8 +533,32 @@ void FixajEkran::EkranParlaklikSeviyesi(INT8U ucPWMLevel) {
   HMT_SetBacklightLevel(ucPWMLevel);
 }
 
+
+
 void FixajEkran::BuzzerSesSeviyesi(INT8U ucLevel) {
   HMT_SetBeepLevel(ucLevel);
+}
+
+void FixajEkran::saatOku(INT8U* sene, INT8U* ay, INT8U* gun, INT8U* saat, INT8U* dakika, INT8U* saniye) {
+  HMT_SendCMD_ReadRTC();
+  delay(10);
+  while (this->available()) {
+    if (this->serialDef.stream->read() == 0xAA) {
+      if (this->serialDef.stream->read() == 0x9B) {
+        *sene = (INT8U)this->serialDef.stream->read();
+        *ay = (INT8U)this->serialDef.stream->read();
+        *gun = (INT8U)this->serialDef.stream->read();
+        *saat = (INT8U)this->serialDef.stream->read();
+        *dakika = (INT8U)this->serialDef.stream->read();
+        *saniye = (INT8U)this->serialDef.stream->read();
+        // Flush remaining bytes, if any
+        this->serialDef.stream->read();
+        this->serialDef.stream->read();
+        this->serialDef.stream->read();
+        this->serialDef.stream->read();
+      }
+    }
+  }
 }
 
 BOOLEAN FixajEkran::SaatTarihAyarla(INT8U Year, INT8U Month, INT8U Day, INT8U Hour, INT8U Minute, INT8U Second) {

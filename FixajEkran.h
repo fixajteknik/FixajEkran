@@ -126,6 +126,8 @@ public:
 
   BOOLEAN grafikCiz(INT32U Addr, INT16U Length, INT16U* Data);
   BOOLEAN grafikCiz(INT32U Addr, int Length, int* Data); 
+  
+  void saatOku(INT8U* sene,INT8U* ay,INT8U* gun,INT8U* saat,INT8U* dakika,INT8U* saniye);
 
 
 private:
